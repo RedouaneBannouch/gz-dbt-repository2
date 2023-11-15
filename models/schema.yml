@@ -107,4 +107,10 @@ models:
             - not_null
       - name: ads_cost
       - name: ads_impression
-
+  - name: finance_campaigns_month
+    description: turnover et ads par mois
+    columns:
+      - name: date_month
+        tests:
+            - unique
+            - not_null
