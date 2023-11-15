@@ -88,3 +88,14 @@ models:
     tests: 
       - unique:
           column_name: "(date_date || '_' || campaign_key)"
+  - name: int_campaigns_day
+    description: agrégation ads campaign par jour
+    columns: 
+      - name: date_date
+        tests:
+            - unique
+            - not_null
+      - name: ads_cost
+      - name: ads_impressions
+      - name: ads_clicks
+
