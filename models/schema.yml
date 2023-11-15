@@ -98,4 +98,13 @@ models:
       - name: ads_cost
       - name: ads_impressions
       - name: ads_clicks
+  - name: finance_campaigns_day
+    description: turnover et ads 
+    columns:
+      - name: date_date
+        tests:
+            - unique
+            - not_null
+      - name: ads_cost
+      - name: ads_impression
 
