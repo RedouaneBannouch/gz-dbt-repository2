@@ -14,7 +14,7 @@ sources:
         tests:
           - unique:
               column_name: "(orders_id || '_' || pdt_id)"
-          
+
       - name: product
         identifier: raw_gz_product
         description: information sur le prix d'acahat
@@ -24,7 +24,7 @@ sources:
             tests:
               - unique
               - not_null
-                  
+
       - name: ship
         identifier: raw_gz_ship
         description: couts d'envoit
@@ -34,5 +34,83 @@ sources:
             tests:
               - unique
               - not_null
-                  
-             
+
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: google analytics
+        columns:
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+          - name: camPGN_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+
+      - name: bing
+        identifier: raw_gz_bing
+        description: microsoft pub
+        columns:
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+          - name: camPGN_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: agence pub multimedia
+        columns:
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+          - name: camPGN_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: pub facebook
+        columns:
+          - name: date_date
+          - name: paid_source
+          - name: campaign_key
+          - name: camPGN_name
+          - name: ads_cost
+          - name: impression
+          - name: click
+
+models:
+  - name: int_campaigns
+    tests: 
+      - unique:
+          column_name: "(date_date || '_' || campaign_key)"
+  - name: int_campaigns_day
+    description: agrégation ads campaign par jour
+    columns: 
+      - name: date_date
+        tests:
+            - unique
+            - not_null
+      - name: ads_cost
+      - name: ads_impressions
+      - name: ads_clicks
+  - name: finance_campaigns_day
+    description: turnover et ads 
+    columns:
+      - name: date_date
+        tests:
+            - unique
+            - not_null
+      - name: ads_cost
+      - name: ads_impression
+  - name: finance_campaigns_month
+    description: turnover et ads par mois
+    columns:
+      - name: date_month
+        tests:
+            - unique
+            - not_null
